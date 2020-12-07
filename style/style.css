@@ -528,9 +528,44 @@ circle.in{
 }
 .workspace_text{
     font-size: 18px;
+    color: var(--color-blue);
 }
-
-
+.b-workspace_cards {
+    display: flex;
+    margin-top: 50px;
+    height: 562px;
+    position: relative;
+}
+/* .b-workspace_card-item {
+    position: relative;
+} */
+.workspace-radioset {
+    display: flex;
+    min-width: 100px;
+    min-height: 100px;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    top: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.workspace-radioset label {
+    display: block;
+    padding: 14px 35px;
+    font-size: 18px;
+    color: var(--color-blue);
+    cursor: pointer;
+}
+.workspace-radioset input:checked + label{
+    background-color: var(--color-blue);
+    color: #ffffff;
+}
+.workspace-radioset input {
+    position: absolute;
+    left: -999px;
+}
 
 
             /* B-WORKSPACE */
