@@ -1,5 +1,5 @@
-const projectsContainer = document.querySelector('.b-projects_container');
-const slideItem = document.querySelectorAll('.b-projects_card-item');
+const projectsContainer = document.querySelector('.b-workspace_container');
+const slideItem = document.querySelectorAll('.b-workspace_card-item');
 const dotItem = document.querySelectorAll('.dot_item');
 let sliderPlaying = false;
 let sliderInterval;
@@ -12,7 +12,10 @@ slideItem.forEach((item, key) => {
 
 const sliderProjectsChange = (i) => {
     activeCardIndex = (i + slideItem.length) % slideItem.length;
-    slideItem.forEach(item => item.className = 'b-projects_card-item');
+    slideItem.forEach(item => {
+        item.className = 'b-workspace_card-item'
+        item.style.animationName = ""
+    });
     dotItem.forEach(item => item.classList.remove('active'));
     slideItem[activeCardIndex].classList.add('active');
     dotItem[activeCardIndex].classList.add('active');
@@ -26,11 +29,17 @@ const playSlider = () => {
 const pauseSlider = (t = 0) => {
     clearInterval(sliderInterval);
     sliderPlaying = false;
-    // if (t > 0) setTimeout(playSlider, t);
+    if (t > 0) setTimeout(playSlider, t);
 };
 
-const nextSlide = () => {sliderProjectsChange(activeCardIndex + 1)};
-const prevSlide = () => {sliderProjectsChange(activeCardIndex - 1)};
+const nextSlide = () => {
+    sliderProjectsChange(activeCardIndex + 1);
+    slideItem[activeCardIndex].style.animationName = "nextSlide"
+};
+const prevSlide = () => {
+    sliderProjectsChange(activeCardIndex - 1);
+    slideItem[activeCardIndex].style.animationName = "prevSlide"
+};
 
 projectsContainer.addEventListener('click', (e) => {
     const target = e.target;
@@ -47,6 +56,4 @@ projectsContainer.addEventListener('click', (e) => {
 });
 // projectsContainer.addEventListener('mouseenter', pauseSlider);
 // projectsContainer.addEventListener('mouseleave', playSlider);
-
-
-// playSlider();
+playSlider();
