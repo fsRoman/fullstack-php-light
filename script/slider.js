@@ -1,4 +1,4 @@
-function createSlider(containerSelector, interval = 3000, mousePause = false) {
+function createSlider(containerSelector, interval = 3000) {
     const sliderContainer = document.querySelector(containerSelector);
     const sliderWrapper = sliderContainer.querySelector('.slider-wrapper');
     const sliderDots = sliderContainer.querySelector('.slider-dots');
@@ -48,19 +48,16 @@ function createSlider(containerSelector, interval = 3000, mousePause = false) {
         const target = e.target;
         if (target.className === 'dot_item') {
             sliderProjectsChange(e.target.dataset.value - 1);
-            pauseSlider(5000);
+            pauseSlider();
         } else if (target.closest('.slider_btn-prev')) {
             prevSlide();
-            pauseSlider(5000);
+            pauseSlider();
         } else if (target.closest('.slider_btn-next')) {
             nextSlide();
-            pauseSlider(5000);
+            pauseSlider();
         };
     });
-    if (mousePause) {
-        sliderContainer.addEventListener('mouseenter', pauseSlider);
         sliderContainer.addEventListener('mouseleave', playSlider);
-    };
     playSlider();
 }
 
