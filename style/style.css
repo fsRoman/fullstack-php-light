@@ -36,7 +36,7 @@ p{
 .main_header,
 .main{
     width: 100%;
-    max-width: 1660px;
+    /* max-width: 1660px; */
     margin: 0 auto;
 }
 
